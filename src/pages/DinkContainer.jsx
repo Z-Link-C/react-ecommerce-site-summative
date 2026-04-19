@@ -5,6 +5,8 @@ import Search from './Search.jsx';
 import DrinkCard from './DrinkCard.jsx';
 
 function DrinkContainer(){
+    //all things tied to the drink container is handled with props 
+    // as a way to simplify data transfer across the same "page"
     const[drinks, setDrinks]=useState([])
     const [search,setSearch]=useState("")
     useEffect(()=>{
@@ -16,10 +18,12 @@ function DrinkContainer(){
         .then(setDrinks)
         .catch(console.log)
     })
+    //filters drinks based on search
     const filtered=drinks.filter((drink)=>
         drink.name.toLowerCase().includes(search)||
         drink.origin.toLowerCase().includes(search)
     )
+    //handles "purchase" deletion from db
     const deleteDrink=delDrink=>{
         setDrinks(prevData=>prevData.filter(d=>d.id!==delDrink))
     }
@@ -28,7 +32,8 @@ function DrinkContainer(){
         <NavBar />
         <main>
             <Search searchTerm={search} onSearchChange={setSearch}/>
-            {filtered.map(drink=>
+            {//loops through all filtered data and renders out
+            filtered.map(drink=>
             <DrinkCard key={drink.id}{...drink} deleteDrink={deleteDrink}/>)}
         </main>
         </>

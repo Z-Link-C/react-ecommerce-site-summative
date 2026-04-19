@@ -2,6 +2,7 @@ import { useOutletContext, Link} from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 
 const DrinkCard=({id,name,description,origin,price,deleteDrink})=>{
+    //handles the delete from db and calls the delete updater
     const handleDelete=()=>{
         fetch(`http://localhost:3000/coffee/${id}`,{
             method:"DELETE",
