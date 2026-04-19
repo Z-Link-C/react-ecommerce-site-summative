@@ -20,12 +20,16 @@ function DrinkContainer(){
         drink.name.toLowerCase().includes(search)||
         drink.origin.toLowerCase().includes(search)
     )
+    const deleteDrink=delDrink=>{
+        setDrinks(prevData=>prevData.filter(d=>d.id!==delDrink))
+    }
     return(
         <>
         <NavBar />
         <main>
             <Search searchTerm={search} onSearchChange={setSearch}/>
-            <DrinkCard drinks={filtered}/>
+            {filtered.map(drink=>
+            <DrinkCard key={drink.id}{...drink} deleteDrink={deleteDrink}/>)}
         </main>
         </>
     )
