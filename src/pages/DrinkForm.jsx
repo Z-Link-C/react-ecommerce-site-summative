@@ -29,6 +29,7 @@ function DrinkForm(){
             if(!r.ok){}
             r.json()
         }).then(data=>{
+            //adds drink to db then moves back to shop listing
             AdminAddDrinks(data)
             navs('/Shop')}
         )

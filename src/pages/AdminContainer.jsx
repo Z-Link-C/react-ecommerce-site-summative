@@ -13,17 +13,20 @@ function AdminContainer(){
             .then(setDrinks)
             .catch(console.log)
         })
+        //adds drinks from form to DB render
     const AdminAddDrinks=(newDrink)=>{
         setDrinks(prevData=>[...prevData,newDrink])
     }
-
+    // renders "adminOptions", was going to add a way to 
+    // only remove drinks from admin-end treating the page as more of a menu
+    // but ran out of time
     return(
         <>
         <NavBar />
         <main>
             <div className="adminOptions">
                 <Link to="add">Add Drink to Menu</Link><br/>
-                <Outlet context={{drinks,AdminAddDrinks,AdminRmDrinks}}/> 
+                <Outlet context={{drinks,AdminAddDrinks}}/> 
             </div>
         </main>
         </>

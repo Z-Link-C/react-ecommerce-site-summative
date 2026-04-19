@@ -9,6 +9,7 @@ import DrinkForm from "./pages/DrinkForm.jsx"
 const App = () =>{
   return (
     <>
+    {/*routes: home, shop and admin all being seperate with the drink form being a child to admin*/}
       <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />}/>
