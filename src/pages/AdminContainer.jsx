@@ -16,17 +16,6 @@ function AdminContainer(){
     const AdminAddDrinks=(newDrink)=>{
         setDrinks(prevData=>[...prevData,newDrink])
     }
-    const AdminRmDrinks=(rmDrink)=>{
-        fetch(`http://localhost:3000/coffee/${rmDrink.id}`,{
-            method:"DELETE"
-        })
-        .then(r=>{
-            if(!r.ok){throw new Error("failed to delete")}
-            setDrinks(prevData=>prevData.filter(data=>data.id!==rmDrink)
-        )
-        })
-        .catch(error=>console.log(error.message))
-    }
 
     return(
         <>
